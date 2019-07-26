@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<constructor-arg value="jdbc:mysql://localhost:3306/patient"/>
+		<constructor-arg value="root"/>
+		<constructor-arg value="root"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	</bean>
+	
+	
+	  
+  
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+<property name="dataSource" ref="ds"></property>  
+</bean>  
+  
+<bean id="edao" class="com.sysintelli.dao.EmployeeDAO"> 
+<property name="jdbcTemplate" ref="jdbcTemplate"></property>  
+</bean>   
+		
+</beans>
